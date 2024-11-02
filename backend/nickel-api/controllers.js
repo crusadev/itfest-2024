@@ -1,15 +1,17 @@
 const postPhoto = (req, res) => {
     try {
-        console.log(req.headers['authorization'])
+        const array8 = new Uint8Array(req.file.buffer)
+        const blob = new Blob([array8],{ type: 'application/octet-stream' })
+        const file = new File([blob], 'test.jpg')
+        console.log(file)
+        const image = new FormData()
+        image.append('data',file)
         fetch('https://www.nyckel.com/v1/functions/recycling-identifier/invoke', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + `${req.headers['authorization']}`,
-                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(
-                { "data": "https://static.vecteezy.com/system/resources/previews/019/852/457/original/plastic-recycle-symbol-pp-5-icon-vector.jpg" }
-            )
+            body: image
         })
             .then(response => response.json())
             .then(data => res.status(200).json(data));

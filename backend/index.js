@@ -1,17 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv'); 
 const userRouter = require('./user/routes/user');
 const mapRouter = require('./user/routes/map');
 const usersRouter = require("./user/routes/user")
 const apiRouter = require("./nickel-api/routes")
+const multer = require("multer");
 
 const app = express();
 const PORT = 8080 || process.env.PORT;
-dotenv.config();
 
-app.use(express.json());
 app.use(cors());
 
 app.use('/user', userRouter);
