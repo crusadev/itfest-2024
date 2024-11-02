@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MainScreen from './screens/main';
 import { useFonts } from 'expo-font';
 import ScanScreen from './screens/scan';
+import { UserContextProvider } from './react-logic/context/UserContext';
 
 const Stack = createNativeStackNavigator()
 
@@ -14,10 +15,12 @@ export default function App() {
   })
   return (
     <NavigationContainer>
+      <UserContextProvider>
       <Stack.Navigator screenOptions={{headerShown:false}} >
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="Scan" component={ScanScreen} />
       </Stack.Navigator>
+      </UserContextProvider>
     </NavigationContainer>
   );
 }

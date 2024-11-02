@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv'); 
 const userRouter = require('./user/routes/user');
 const mapRouter = require('./user/routes/map');
-const dotenv = require('dotenv');
 const usersRouter = require("./user/routes/user")
 const apiRouter = require("./nickel-api/routes")
 
