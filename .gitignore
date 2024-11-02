@@ -1,6 +1,7 @@
 backend/node_modules
 mobileapp/node_modules
 mobileapp/android
+mobileapp/ios
 backend/.env
 
 !mobileapp/android/app/src/main/java/com/itfest/mobileapp/MainApplication.kt

@@ -1,14 +1,18 @@
 import {View,Text} from "react-native"
 import MapView from 'react-native-maps';
 import styles from "./styles";
-import useLocation from "../../react-logic/hooks/useLocation";
+import ScanButton from "../../components/scan-button";
 
 const MainScreen = () => {
-    const {userLocation,error} = useLocation();
     return(
         <View>
-            <Text>Hello World</Text>
-            <MapView provider="google" initialRegion={userLocation} style={styles.map}/>
+            <MapView provider="google" initialRegion={{
+                latitude:44.4366848,
+                longitude:26.0931584,
+                latitudeDelta:0.15,
+                longitudeDelta:0.15
+            }} style={styles.map}/>
+            <ScanButton />
         </View>
     )
 }
