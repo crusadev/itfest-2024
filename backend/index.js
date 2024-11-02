@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv'); 
-const userRouter = require('./user/routes/user');
+const dotenv = require('dotenv');
+const usersRouter = require("./user/routes/user")
 
 const app = express();
 const PORT = 8080 || process.env.PORT;
@@ -21,3 +21,6 @@ mongoose.connect(`mongodb+srv://cereals28:zQSz033ELftR1tUG@cluster0.g8zhw.mongod
     .catch((error) => {
         console.error('Error connecting to MongoDB Atlas: ', error);
     });
+
+//Routes
+app.use("/user", usersRouter)
