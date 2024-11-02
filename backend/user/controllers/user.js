@@ -62,7 +62,7 @@ const loginUser = async (req, res) => {
                
             
         }
-        return res.status(503).json({ message: "Invalid password - email combnation. "});
+        return res.status(503).json({ message: "Invalid password - email combination. "});
 
     } catch (err) {
         console.error("Internal server error.");
@@ -70,5 +70,11 @@ const loginUser = async (req, res) => {
     }
 }
 
+const getUserByID = async ( userID ) => {
+    const user = await userModel.findOne({ userID });
+    if (user) {
+        return JSON.stringify(user);
+    }
+}
 
-module.exports = { registerUser, loginUser, verifyToken };
+module.exports = { registerUser, loginUser, verifyToken, getUserByID };
