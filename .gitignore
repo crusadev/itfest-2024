@@ -1,6 +1,7 @@
 backend/node_modules
 mobileapp/node_modules
 mobileapp/android
+backend/.env
 
-!mobile-app/android/app/src/main/java/com/itfest/mobileapp/MainApplication.kt
+!mobileapp/android/app/src/main/java/com/itfest/mobileapp/MainApplication.kt
 !mobileapp/android/app/src/main/AndroidManifest.xml
