@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv'); 
+const userRouter = require('./user/routes/user');
 
 const app = express();
 const PORT = 8080 || process.env.PORT;
@@ -15,6 +16,11 @@ app.get("/", (req, res) => {
     console.log('Test');
 });
 
+/* Routes */
+
+app.use('user', userRouter);
+
+
 /*
 mongoose.connect(`
     ${mongooseUri}
@@ -24,4 +30,5 @@ mongoose.connect(`
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 })
+
 

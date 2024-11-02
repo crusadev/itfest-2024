@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 /* 
 Parola, mail, CNP 
 */
-const Schema = new mongoose.Schema;
+const Schema = mongoose.Schema;
 
 
 
