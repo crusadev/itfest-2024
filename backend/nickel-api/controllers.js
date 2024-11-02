@@ -1,15 +1,17 @@
 const postPhoto = (req, res) => {
     try {
-        console.log(req.file)
+        const array8 = new Uint8Array(req.file.buffer)
+        const blob = new Blob([array8],{ type: 'application/octet-stream' })
+        const file = new File([blob], 'test.jpg')
+        console.log(file)
         const image = new FormData()
-        image.append('data',)
+        image.append('data',file)
         fetch('https://www.nyckel.com/v1/functions/recycling-identifier/invoke', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + `${req.headers['authorization']}`,
-                'Content-Type': 'application/json',
             },
-            body: { "data": req.file.buffer }
+            body: image
         })
             .then(response => response.json())
             .then(data => res.status(200).json(data));

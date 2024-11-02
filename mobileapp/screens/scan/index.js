@@ -17,7 +17,7 @@ const ScanScreen = ({navigation}) => {
     const cameraRef = useRef(null);
 
     const handleTakePhoto = async () => {
-        const options = {quality:1, base64: true, exif:false};
+        const options = {quality:0.5, base64: true, exif:false};
         const picture = await this.camera.takePictureAsync(options)
         setPhoto(picture.uri)
     }
