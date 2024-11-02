@@ -19,7 +19,7 @@ const MainScreen = () => {
         (async () => {
             try{
                 console.log(uri)
-                const markers = await axios.get(`https://${uri}/services/map`,{
+                const markers = await axios.get(`http://${uri}/services/map`,{
                     headers:{
                         "Content-Type": "application/x-www-form-urlencoded"
                     }

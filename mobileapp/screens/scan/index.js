@@ -4,6 +4,10 @@ import globalStyles from "../../globalStyles"
 import { CameraView, Camera, useCameraPermissions } from 'expo-camera';
 import { useRef, useState } from "react";
 import axios from "axios"
+import Constants from "expo-constants"
+const uri =
+  Constants.expoConfig?.hostUri?.split(':').shift()?.concat(':8080') ??
+  'yourapi.com';
 
 const ScanScreen = ({navigation}) => {
     const [facing, setFacing] = useState('back');
@@ -20,13 +24,19 @@ const ScanScreen = ({navigation}) => {
     const handleSendPhoto = async () => {
         try{
             const image = new FormData()
-            image.append("file",{uri:photo})
-            const result = await axios.post("http://172.20.10.2:8080/api",{
-                image
+            image.append("file",{
+                uri:photo,
+                type:"image/jpeg",
+                name:"photo.jpg"
             })
-            console.log(result)
+            const result = await axios.post(`http://${uri}/api`,image,{
+                headers:{
+                    "Content-Type":"multipart/form-data"
+                }
+            })
+            console.log(result.data)
         }catch(err){
-            console.log(err)
+            console.log(err.message)
         } 
     }
     return(
