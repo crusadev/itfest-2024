@@ -1,6 +1,8 @@
 const postPhoto = (req, res) => {
     try {
         console.log(req.headers['authorization'])
+        console.log("endpoint called")
+        console.log(req.body.image)
         fetch('https://www.nyckel.com/v1/functions/recycling-identifier/invoke', {
             method: 'POST',
             headers: {
@@ -8,7 +10,7 @@ const postPhoto = (req, res) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(
-                { "data": "https://static.vecteezy.com/system/resources/previews/019/852/457/original/plastic-recycle-symbol-pp-5-icon-vector.jpg" }
+                { "data": req.body.image }
             )
         })
             .then(response => response.json())
