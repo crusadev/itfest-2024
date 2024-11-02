@@ -43,20 +43,13 @@ const MainScreen = () => {
             }} style={styles.map}>
                 {markers && markers.map((marker,index) => (
                     <Marker
-                    title={marker.formatted_address}
+                    title={marker.name}
                     coordinate={{
                         "latitude":marker.location.lat,
                         "longitude":marker.location.lng
                     }}
                     key={index}>
                         <FontAwesomeIcon icon={faTrash} color="rgb(82, 109, 242)" size={32}/>
-                        <Callout style={styles.markerContainer}>
-                            <View>
-                                <Image style={[styles.markerContainerText,styles.markerContainerImage]} source={{uri:marker.icon}} />
-                                <Text style={[styles.markerContainerText,styles.markerContainerName]}>{marker.name}</Text>
-                                <Text style={[styles.markerContainerText,styles.markerContainerAddress]}>{marker.formatted_address}</Text>
-                            </View>
-                        </Callout>
                     </Marker>
                 ))}
             </MapView>

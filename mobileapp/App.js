@@ -4,6 +4,7 @@ import MainScreen from './screens/main';
 import { useFonts } from 'expo-font';
 import ScanScreen from './screens/scan';
 import IconsTab from './components/icons-tab';
+import ResultScreen from './screens/result';
 
 const Stack = createNativeStackNavigator()
 
@@ -18,6 +19,7 @@ export default function App() {
       <Stack.Navigator screenOptions={{headerShown:false}} >
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="Scan" component={ScanScreen} />
+        <Stack.Screen name="Result" component={ResultScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

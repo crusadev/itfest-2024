@@ -5,6 +5,7 @@ import { CameraView, Camera, useCameraPermissions } from 'expo-camera';
 import { useRef, useState } from "react";
 import axios from "axios"
 import Constants from "expo-constants"
+import LoadingBox from "../../components/loading-box";
 const uri =
   Constants.expoConfig?.hostUri?.split(':').shift()?.concat(':8080') ??
   'yourapi.com';
@@ -15,14 +16,16 @@ const ScanScreen = ({navigation}) => {
     const [cameraReady,setCameraReady] = useState(false);
     const [photo,setPhoto] = useState(null);
     const cameraRef = useRef(null);
+    const [loading,setLoading] = useState(false)
 
     const handleTakePhoto = async () => {
-        const options = {quality:0.5, base64: true, exif:false};
+        const options = {quality:1, base64: true, exif:false};
         const picture = await this.camera.takePictureAsync(options)
         setPhoto(picture.uri)
     }
     const handleSendPhoto = async () => {
         try{
+            setLoading(true)
             const image = new FormData()
             image.append("file",{
                 uri:photo,
@@ -34,8 +37,11 @@ const ScanScreen = ({navigation}) => {
                     "Content-Type":"multipart/form-data"
                 }
             })
+            setLoading(false)
+            navigation.navigate("Result",result.data)
             console.log(result.data)
         }catch(err){
+            setLoading(false)
             console.log(err.message)
         } 
     }
@@ -60,6 +66,7 @@ const ScanScreen = ({navigation}) => {
                 <Text style={styles.sendPhotoText}>Send</Text>
             </TouchableOpacity>
             </View>
+            {loading && <LoadingBox/>}
         </View>
         :
         <View style={[globalStyles.container,styles.permissionScreen]}>
