@@ -18,6 +18,7 @@ const MainScreen = () => {
     useEffect(() => {
         (async () => {
             try{
+                console.log(uri)
                 const markers = await axios.get(`https://${uri}/services/map`,{
                     headers:{
                         "Content-Type": "application/x-www-form-urlencoded"
