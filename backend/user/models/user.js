@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 /* 
-Parola, mail, CNP 
+Parola, mail, CNP + clientID, clientSecret 
 */
 const Schema = mongoose.Schema;
 
