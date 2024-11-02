@@ -10,7 +10,12 @@ const PORT = 8080 || process.env.PORT;
 dotenv.config();
 
 app.use(express.json());
-app.use(cors());
+
+app.use(cors({
+    origin: ['http://localhost:3000'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+}))
 
 app.get("/", (req, res) => {
     console.log('Test');
@@ -18,7 +23,7 @@ app.get("/", (req, res) => {
 
 /* Routes */
 
-app.use('user', userRouter);
+app.use('/user', userRouter);
 
 
 /*
