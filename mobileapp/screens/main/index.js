@@ -1,30 +1,36 @@
-import {View,Text} from "react-native"
-import MapView, { Marker } from 'react-native-maps';
+import {View,Text, Image} from "react-native"
+import MapView, { Callout, Marker } from 'react-native-maps';
 import styles from "./styles";
 import ScanButton from "../../components/scan-button";
 import IconsTab from "../../components/icons-tab";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faT, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import axios from "axios"
+import Constants from "expo-constants"
+const uri =
+  Constants.expoConfig?.hostUri?.split(':').shift()?.concat(':8080') ??
+  'yourapi.com';
 
 
 const MainScreen = () => {
-    const markers = [
-        {
-            title:"test 1",
-            lng:26.096594852092743, 
-            lat:44.42609080353044
-        },
-        {
-            title:"test 2",
-            lng:26.116593402744584,
-            lat:44.431423340839046
-        },
-        {
-            title:"test 3",
-            lat:44.4393905934261,
-            lng:26.093333285892015
-        }
-    ]
+    const [markers,setMarkers] = useState()
+    useEffect(() => {
+        (async () => {
+            try{
+                const markers = await axios.get(`https://${uri}/services/map`,{
+                    headers:{
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                })
+                console.log(markers)
+                setMarkers(markers.data)
+            }catch(err){
+                console.log(err)
+            }
+
+        })()
+    },[])
     return(
         <View>
             <IconsTab />
@@ -34,15 +40,22 @@ const MainScreen = () => {
                 latitudeDelta:0.15,
                 longitudeDelta:0.15
             }} style={styles.map}>
-                {markers.map((marker,index) => (
+                {markers && markers.map((marker,index) => (
                     <Marker
-                    title={marker.title}
+                    title={marker.formatted_address}
                     coordinate={{
-                        "latitude":marker.lat,
-                        "longitude":marker.lng
+                        "latitude":marker.location.lat,
+                        "longitude":marker.location.lng
                     }}
                     key={index}>
-                        <FontAwesomeIcon icon={faTrash} />
+                        <FontAwesomeIcon icon={faTrash} color="rgb(82, 109, 242)" size={32}/>
+                        <Callout style={styles.markerContainer}>
+                            <View>
+                                <Image style={[styles.markerContainerText,styles.markerContainerImage]} source={{uri:marker.icon}} />
+                                <Text style={[styles.markerContainerText,styles.markerContainerName]}>{marker.name}</Text>
+                                <Text style={[styles.markerContainerText,styles.markerContainerAddress]}>{marker.formatted_address}</Text>
+                            </View>
+                        </Callout>
                     </Marker>
                 ))}
             </MapView>

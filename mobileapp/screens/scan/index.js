@@ -3,6 +3,7 @@ import styles from "./styles"
 import globalStyles from "../../globalStyles"
 import { CameraView, Camera, useCameraPermissions } from 'expo-camera';
 import { useRef, useState } from "react";
+import axios from "axios"
 
 const ScanScreen = ({navigation}) => {
     const [facing, setFacing] = useState('back');
@@ -20,7 +21,10 @@ const ScanScreen = ({navigation}) => {
         try{
             const image = new FormData()
             image.append("file",{uri:photo})
-            console.log(image)
+            const result = await axios.post("http://172.20.10.2:8080/api",{
+                image
+            })
+            console.log(result)
         }catch(err){
             console.log(err)
         } 
