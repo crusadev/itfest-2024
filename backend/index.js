@@ -15,6 +15,13 @@ app.get("/", (req, res) => {
     console.log('Test');
 });
 
+/*
+mongoose.connect(`
+    ${mongooseUri}
+    `);
+*/
+
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 })
+
