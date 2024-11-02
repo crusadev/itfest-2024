@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MainScreen from './screens/main';
 import { useFonts } from 'expo-font';
 import ScanScreen from './screens/scan';
+import IconsTab from './components/icons-tab';
 
 const Stack = createNativeStackNavigator()
 
