@@ -1,10 +1,11 @@
 const userModel = require('../models/user')
 
 const postUser = async (req, res) => {
-    const { fullname, email, password } = req.body
+    const { fullname, email, password, client_id, client_secret } = req.body
     try {
         const User = await userModel.signup(email, password, fullname)
-        res.status(200).json(User)
+        const newUser = await userModel.findByIdAndUpdate(User._id, { client_id, client_secret })
+        res.status(200).json(newUser)
     } catch (err) {
         res.status(400).json({ error: err.message })
     }

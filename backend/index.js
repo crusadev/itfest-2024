@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const usersRouter = require("./user/routes/user")
+const apiRouter = require("./nickel-api/routes")
 
 const app = express();
 const PORT = 8080 || process.env.PORT;
@@ -24,3 +25,4 @@ mongoose.connect(`mongodb+srv://cereals28:zQSz033ELftR1tUG@cluster0.g8zhw.mongod
 
 //Routes
 app.use("/user", usersRouter)
+app.use("/api", apiRouter)
