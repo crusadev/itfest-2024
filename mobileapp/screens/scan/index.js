@@ -22,7 +22,7 @@ const ScanScreen = () => {
             }
         </View>
         :
-        <View>
+        <View style={styles.statusBarmargin}>
             <Text>We need camera permissions to work!</Text>
             <TouchableOpacity onPress={() => requestPermission()} >
                 <Text>Grant Permissions</Text>
