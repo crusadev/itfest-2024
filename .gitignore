@@ -5,7 +5,7 @@ backend/node_modules
 mobile-app/node_modules
 mobile-app/android
 mobile-app/ios
-backend/.envs
+backend/.env
 # Expo
 .expo/
 dist/
