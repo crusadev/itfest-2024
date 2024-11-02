@@ -37,7 +37,12 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.itfest.mobileapp"
+      "bundleIdentifier": "com.itfest.mobileapp",
+      "config":{
+        "googleMaps":{
+          "apiKey":"AIzaSyAaF--NatPldFBCDLoV9a7Sc--Kp8OejD0"
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
