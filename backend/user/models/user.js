@@ -27,6 +27,10 @@ const UserSchema = new Schema({
         require: true,
         unique: true
     },
+    rewardPoints: {
+        type: Number,
+        require: true,
+    }
 });
 
 //Signup Method
