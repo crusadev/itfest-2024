@@ -5,7 +5,7 @@ import { useFonts } from 'expo-font';
 import ScanScreen from './screens/scan';
 import IconsTab from './components/icons-tab';
 import ResultScreen from './screens/result';
-import { UserContextProvider } from './react-logic/context/UserContext';
+import RewardsScreen from './screens/rewards';
 
 const Stack = createNativeStackNavigator()
 
@@ -17,13 +17,12 @@ export default function App() {
   })
   return (
     <NavigationContainer>
-      <UserContextProvider>
       <Stack.Navigator screenOptions={{headerShown:false}} >
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="Scan" component={ScanScreen} />
         <Stack.Screen name="Result" component={ResultScreen} />
+        <Stack.Screen name="Rewards" component={RewardsScreen} />
       </Stack.Navigator>
-      </UserContextProvider>
     </NavigationContainer>
   );
 }

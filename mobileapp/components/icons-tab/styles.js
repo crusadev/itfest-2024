@@ -26,6 +26,10 @@ const styles = StyleSheet.create({
         borderRadius:18,
         paddingLeft:12,
         margin:12
+    },
+    profile:{
+        padding:24,
+        marginRight:12,
     }
 })
 

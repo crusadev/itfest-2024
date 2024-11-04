@@ -4,7 +4,7 @@ import styles from "./styles";
 import ScanButton from "../../components/scan-button";
 import IconsTab from "../../components/icons-tab";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faT, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import axios from "axios"
 import Constants from "expo-constants"

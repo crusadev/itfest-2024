@@ -11,7 +11,7 @@ const postUser = async (req, res) => {
     }
 }
 
-const logUser = async (req, res) => {
+const logUser = async (req, res) => { 
     const { email, password } = req.body
     try {
         const User = await userModel.login(email, password)
