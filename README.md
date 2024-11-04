@@ -1,4 +1,4 @@
-Hello World
+Hello World!
 Here you can find the mobile application we made for the It-Fest 2024 second hackathon, supported by EA/Frostbite.
 This was a 12-hour hackathon where we needed to code an app from 0 in the smart city direction with gamification features.
 In 12 hours we developed a Cross-Platform mobile application integrating Google Maps API to show us reciclying centers, the main feature was the scan product one,
